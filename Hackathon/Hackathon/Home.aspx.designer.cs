@@ -10,7 +10,7 @@
 namespace Hackathon {
     
     
-    public partial class index {
+    public partial class Home {
         
         /// <summary>
         /// form1 control.
