@@ -4,75 +4,68 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+        <script type="text/javascript">
+            var ws;
 
-    <script src="Scripts/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script type="text/javascript">
+            function $(id) {
+                return document.getElementById(id);
+            }
 
-        $(document).ready(function () {
-
-            var name = prompt('what is your name?:');
-
-            var url = 'ws://localhost:4465/ws.ashx?name=' + name;
-
-            alert('Connecting to: ' + url);
-
-            ws = new WebSocket(url);
-
-            ws.onopen = function () {
-
-                $('#messages').prepend('Connected <br/>');
-
-                $('#cmdSend').click(function () {
-
-                    ws.send($('#txtMessage').val());
-
-                    $('#txtMessage').val('');
-
+            function wireEvents() {
+                $('send').addEventListener('click', function () {
+                    var message = $('message');
+                    ws.send(message.value);
+                    message.value = '';
                 });
 
+                $('close').addEventListener('click', function () {
+                    ws.close();
+                });
+            }
+
+            function createSpan(text) {
+                var span = document.createElement('span');
+                span.innerHTML = text + '<br />';
+                return span;
+            }
+
+            window.onload = function () {
+                wireEvents();
+                var conversation = $('conversation');
+                var url = 'ws://localhost:5707/WebSocketsServer.ashx?name=John Doe';
+                ws = new WebSocket(url);
+
+                ws.onerror = function (e) {
+                    conversation.appendChild(createSpan('Problem with connection: ' + e.message));
+                };
+
+                ws.onopen = function () {
+                    conversation.innerHTML = 'Client connected <br/>';
+                };
+
+                ws.onmessage = function (e) {
+                    conversation.appendChild(createSpan(e.data.toString()));
+                };
+
+                ws.onclose = function () {
+                    conversation.innerHTML = 'Closed connection!';
+                };
+
             };
 
-            ws.onmessage = function (e) {
+        </script>
 
-                $('#chatMessages').prepend(e.data + '<br/>');
 
-            };
+    </head>
+    <body>
+        <form id="form1" runat="server">
 
-            $('#cmdLeave').click(function () {
-
-                ws.close();
-
-            });
-
-            ws.onclose = function () {
-
-                $('#chatMessages').prepend('Closed <br/>');
-
-            };
-
-            ws.onerror = function (e) {
-
-                $('#chatMessages').prepend('Oops something went wrong <br/>');
-
-            };
-
-        });
-
-    </script>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-
-        <input id="txtMessage" />
-
-        <input id="cmdSend" type="button" value="Send" />
-
-        <input id="cmdLeave" type="button" value="Leave" />
-
-        <br />
-
-        <div id="chatMessages" />
-    </form>
-</body>
+            <h1>Using WebSockets</h1>
+            <input id="message" />
+            <input id="send" type="button" value="Send" />
+            <input id="close" type="button" value="Close Connection" />
+            <br />
+            <div id="conversation"></div>
+        </form>
+    </body>
 </html>

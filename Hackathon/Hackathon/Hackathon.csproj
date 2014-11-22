@@ -72,6 +72,8 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Session.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebSocketsServer.ashx" />
+    <Content Include="WebSocketsServer2.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connect.aspx.cs">
@@ -132,6 +134,12 @@
       <DependentUpon>Session.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestWebSocketHandler.cs" />
+    <Compile Include="WebSocketsServer.ashx.cs">
+      <DependentUpon>WebSocketsServer.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebSocketsServer2.ashx.cs">
+      <DependentUpon>WebSocketsServer2.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ws.ashx.cs">
       <DependentUpon>ws.ashx</DependentUpon>
     </Compile>
