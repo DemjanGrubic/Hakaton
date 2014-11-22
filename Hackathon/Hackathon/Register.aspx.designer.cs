@@ -10,6 +10,6 @@
 namespace Hackathon {
     
     
-    public partial class Register {
+    public partial class register {
     }
 }
