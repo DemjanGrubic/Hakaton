@@ -168,7 +168,7 @@ namespace Hackathon
             string result = webclient.DownloadString(Home.ServerHttpGetRequestFutureProblems.ToString() + "?id=" + HttpContext.Current.User.Identity.Name);
             dynamic json = Functions.getJson(result);
 
-            if (json.lectures != null)
+            if (json.problems != null)
             {
                 foreach (dynamic jsonProblem in json.problems)
                 {
