@@ -6,6 +6,7 @@ scrollbar-3dlight-color: #7D7E94;
 scrollbar-darkshadow-color: #2D2C4D;
 scrollbar-track-color: #7D7E94;
 scrollbar-arrow-color: #C1C1D1;
+background-color: #e9eaed;
 }
 #send {
     background-color: rgba(1, 138, 254, 1);
@@ -24,7 +25,8 @@ scrollbar-arrow-color: #C1C1D1;
 
 #can {
 	position: relative;
-	top: -150px
+	top: -150px;
+    background-color: white;
 }
 
 #send:hover {
@@ -55,4 +57,5 @@ scrollbar-arrow-color: #C1C1D1;
     height: 300px;
     overflow-y: scroll;
 	word-wrap: break-word;
+    background-color: white;
 }

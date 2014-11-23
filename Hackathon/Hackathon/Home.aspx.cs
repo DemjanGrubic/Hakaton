@@ -91,7 +91,7 @@ namespace Hackathon
                 }
                 else
                 {
-                    html.Append("<div class='button'><a href='/Session.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestLecture.firstNameLastName + "'>Connect</a></div>");
+                    html.Append("<a href='/Session.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestLecture.firstNameLastName + "'><div class='button'>Connect</div></a>");
                 }
 
                 LiteralControl literalControl = new LiteralControl();
