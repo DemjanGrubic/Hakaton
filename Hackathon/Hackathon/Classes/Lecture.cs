@@ -22,6 +22,7 @@ namespace Hackathon.Classes
         public int UserCredit { get; set; }
         public int Applied { get; set; }
         public int Active { get; set; }
+        public string firstNameLastName { get; set; }
 
         public override string ToString()
         {

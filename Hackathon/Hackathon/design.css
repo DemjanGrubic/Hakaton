@@ -102,6 +102,11 @@ a {
     width: 900px;
 }
 
+.inputTable {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
 .lecture, .problem {
     background-color: white;
     padding: 20px 20px;
@@ -109,6 +114,11 @@ a {
     border-bottom: 3px solid #C1C1C1;
     border-right: 3px solid #F2F2F2;
     margin: 10px;
+}
+
+.loginContainer {
+    width: 550px;
+    margin: auto;
 }
 
 #nextSessionLecture, #nextSessionProblem {
