@@ -39,6 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.WebSockets">
+      <HintPath>..\packages\Microsoft.WebSockets.0.2.3\lib\net45\Microsoft.WebSockets.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -65,7 +68,13 @@
     <Content Include="PostProblem.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Session.aspx" />
     <Content Include="Web.config" />
+    <Content Include="WebSocketsServer.ashx" />
+    <Content Include="WebSocketsServer2.ashx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connect.aspx.cs">
@@ -89,6 +98,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MicrosoftWebSockets.cs" />
     <Compile Include="PostLecture.aspx.cs">
       <DependentUpon>PostLecture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,8 +128,23 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Session.aspx.cs">
+      <DependentUpon>Session.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Session.aspx.designer.cs">
+      <DependentUpon>Session.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebSocketsServer.ashx.cs">
+      <DependentUpon>WebSocketsServer.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="WebSocketsServer2.ashx.cs">
+      <DependentUpon>WebSocketsServer2.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
