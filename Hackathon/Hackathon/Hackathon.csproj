@@ -97,6 +97,7 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MicrosoftWebSockets.cs" />
     <Compile Include="PostLecture.aspx.cs">
       <DependentUpon>PostLecture.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,15 +134,11 @@
     <Compile Include="Session.aspx.designer.cs">
       <DependentUpon>Session.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestWebSocketHandler.cs" />
     <Compile Include="WebSocketsServer.ashx.cs">
       <DependentUpon>WebSocketsServer.ashx</DependentUpon>
     </Compile>
     <Compile Include="WebSocketsServer2.ashx.cs">
       <DependentUpon>WebSocketsServer2.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="ws.ashx.cs">
-      <DependentUpon>ws.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +150,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="ws.ashx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
