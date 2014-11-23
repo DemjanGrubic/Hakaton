@@ -10,3 +10,4 @@ C:\Users\Sasha\Desktop\SICEF hakaton\Hakaton\Hackathon\Hackathon\bin\Hackathon.p
 C:\Users\Sasha\Desktop\SICEF hakaton\Hakaton\Hackathon\Hackathon\bin\Microsoft.WebSockets.dll
 C:\Users\Sasha\Desktop\SICEF hakaton\Hakaton\Hackathon\Hackathon\obj\Debug\Hackathon.dll
 C:\Users\Sasha\Desktop\SICEF hakaton\Hakaton\Hackathon\Hackathon\obj\Debug\Hackathon.pdb
+C:\Users\Sasha\Desktop\SICEF hakaton\Hakaton\Hackathon\Hackathon\obj\Debug\Hackathon.csprojResolveAssemblyReference.cache

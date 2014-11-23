@@ -10,17 +10,35 @@ namespace Hackathon
     {
         private static WebSocketCollection clients = new WebSocketCollection();
         private string name;
+        private static string color = "black";
 
         public override void OnOpen()
         {
-            this.name = this.WebSocketContext.QueryString["chatName"];
+            this.name = this.WebSocketContext.QueryString["name"];
             clients.Add(this);
-            clients.Broadcast(name + " has connected.");
+            clients.Broadcast("3" + name + " has connected.");
         }
 
         public override void OnMessage(string message)
         {
-            clients.Broadcast(string.Format("{0} said: {1}", name, message));
+            // 0 - msg
+            // 1 - draw
+            // 2 - give control
+            // 3 - new user has connected
+            // 4 - change color
+            switch (message[0])
+            {
+                case '1':
+                    clients.Broadcast(string.Format("1findxy2({0}, \"{1}\");", message.Substring(1), color));
+                    break;
+                case '0':
+                case '2':
+                    clients.Broadcast(string.Format("{0}", message));
+                    break;
+                case '4':
+                    color = message.Substring(1);
+                    break;
+            }
         }
 
         public override void OnClose()
