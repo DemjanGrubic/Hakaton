@@ -33,9 +33,9 @@
         window.onload = function () {
             wireEvents();
             var conversation = $('conversation');
-            var url = 'ws://localhost:4465/WebSocketsServer.ashx?name=John Doe';
+            var url = 'ws://10.10.66.90:4465/WebSocketsServer.ashx?name=testName';
 
-            alert('url = ' + url);
+            //alert('url = ' + url);
             ws = new WebSocket(url);
 
             ws.onerror = function (e) {
@@ -59,11 +59,20 @@
     </script>
 
 
+    <style type="text/css">
+        #graph {
+            height: 20px;
+            width: 421px;
+        }
+    </style>
+
+
 </head>
 <body>
     <form id="form1" runat="server">
 
         <h1>Using WebSockets</h1>
+        <canvas id="graph"></canvas><br />
         <input id="message" />
         <input id="send" type="button" value="Send" />
         <input id="close" type="button" value="Close Connection" />
