@@ -168,41 +168,44 @@ namespace Hackathon
             string result = webclient.DownloadString(Home.ServerHttpGetRequestFutureProblems.ToString() + "?id=" + HttpContext.Current.User.Identity.Name);
             dynamic json = Functions.getJson(result);
 
-            foreach (dynamic jsonProblem in json.problems)
+            if (json.lectures != null)
             {
-                Problem problem = new Problem();
-                problem.Id = Convert.ToInt32((string)jsonProblem.problem_id);
-                problem.BeginTime = Functions.calculateReverseTime(Convert.ToInt64((string)jsonProblem.begin_time));
-                problem.Duration = Convert.ToInt32((string)jsonProblem.duration) / 60;
-
-                problem.PosterId = Convert.ToInt32((string)jsonProblem.poster_id);
-                problem.PosterEmail = (string)jsonProblem.poster_email;
-                problem.PosterFirstName = (string)jsonProblem.poster_first_name;
-                problem.PosterLastName = (string)jsonProblem.poster_last_name;
-
-                problem.Cost = Convert.ToInt32((string)jsonProblem.cost);
-                problem.Description = (string)jsonProblem.description;
-
-                problem.SolveId = Convert.ToInt32((string)jsonProblem.solver_id);
-
-                // there is solver
-                if (problem.SolveId != -1)
+                foreach (dynamic jsonProblem in json.problems)
                 {
-                    problem.SolverEmail = (string)jsonProblem.solver_email;
-                    problem.SolverFirstName = (string)jsonProblem.solver_first_name;
-                    problem.SolverLastName = (string)jsonProblem.solver_last_name;
-                }
+                    Problem problem = new Problem();
+                    problem.Id = Convert.ToInt32((string)jsonProblem.problem_id);
+                    problem.BeginTime = Functions.calculateReverseTime(Convert.ToInt64((string)jsonProblem.begin_time));
+                    problem.Duration = Convert.ToInt32((string)jsonProblem.duration) / 60;
 
-                problem.UserCredit = Convert.ToInt32(json.credit);
-                problem.Applied = Convert.ToInt32(jsonProblem.me);
-                problem.Active = jsonProblem.active;
-                problem.firstNameLastName = json.first_name + " " + json.last_name;
+                    problem.PosterId = Convert.ToInt32((string)jsonProblem.poster_id);
+                    problem.PosterEmail = (string)jsonProblem.poster_email;
+                    problem.PosterFirstName = (string)jsonProblem.poster_first_name;
+                    problem.PosterLastName = (string)jsonProblem.poster_last_name;
 
-                problems.AddLast(problem);
+                    problem.Cost = Convert.ToInt32((string)jsonProblem.cost);
+                    problem.Description = (string)jsonProblem.description;
 
-                if (problem.SolveId == Convert.ToInt32(HttpContext.Current.User.Identity.Name) && closestProblem == null)
-                {
-                    closestProblem = problem;
+                    problem.SolveId = Convert.ToInt32((string)jsonProblem.solver_id);
+
+                    // there is solver
+                    if (problem.SolveId != -1)
+                    {
+                        problem.SolverEmail = (string)jsonProblem.solver_email;
+                        problem.SolverFirstName = (string)jsonProblem.solver_first_name;
+                        problem.SolverLastName = (string)jsonProblem.solver_last_name;
+                    }
+
+                    problem.UserCredit = Convert.ToInt32(json.credit);
+                    problem.Applied = Convert.ToInt32(jsonProblem.me);
+                    problem.Active = jsonProblem.active;
+                    problem.firstNameLastName = json.first_name + " " + json.last_name;
+
+                    problems.AddLast(problem);
+
+                    if (problem.SolveId == Convert.ToInt32(HttpContext.Current.User.Identity.Name) && closestProblem == null)
+                    {
+                        closestProblem = problem;
+                    }
                 }
             }
         }
@@ -215,31 +218,34 @@ namespace Hackathon
             string result = webclient.DownloadString(Home.ServerHttpGetRequestFutureLectures.ToString() + "?id=" + HttpContext.Current.User.Identity.Name);
             dynamic json = Functions.getJson(result);
 
-            foreach (dynamic jsonLecture in json.lectures)
+            if (json.lectures != null)
             {
-                Lecture lecture = new Lecture();
-                lecture.Id = Convert.ToInt32((string)jsonLecture.lecture_id);
-                lecture.BeginTime = Functions.calculateReverseTime(Convert.ToInt64((string)jsonLecture.begin_time));
-                lecture.Duration = Convert.ToInt32((string)jsonLecture.duration) / 60;
-                lecture.TeacherId = Convert.ToInt32((string)jsonLecture.teacher_id);
-                lecture.TeacherEmail = (string)jsonLecture.teacher_email;
-                lecture.TeacherFirstName = (string)jsonLecture.teacher_first_name;
-                lecture.TeacherLastName = (string)jsonLecture.teacher_last_name;
-                lecture.Cost = Convert.ToInt32((string)jsonLecture.cost);
-                lecture.MaxUsers = Convert.ToInt32((string)jsonLecture.max_users);
-                lecture.Description = (string)jsonLecture.description;
-                lecture.NumberOfParticipants = Convert.ToInt32((string)jsonLecture.n_part);
-
-                lecture.UserCredit = Convert.ToInt32(json.credit);
-                lecture.Applied = Convert.ToInt32(jsonLecture.me);
-                lecture.Active = jsonLecture.active;
-                lecture.firstNameLastName = json.first_name + " " + json.last_name;
-
-                lectures.AddLast(lecture);
-
-                if ((lecture.TeacherId == Convert.ToInt32(HttpContext.Current.User.Identity.Name) || lecture.Applied == 1) && closestLecture == null)
+                foreach (dynamic jsonLecture in json.lectures)
                 {
-                    closestLecture = lecture;
+                    Lecture lecture = new Lecture();
+                    lecture.Id = Convert.ToInt32((string)jsonLecture.lecture_id);
+                    lecture.BeginTime = Functions.calculateReverseTime(Convert.ToInt64((string)jsonLecture.begin_time));
+                    lecture.Duration = Convert.ToInt32((string)jsonLecture.duration) / 60;
+                    lecture.TeacherId = Convert.ToInt32((string)jsonLecture.teacher_id);
+                    lecture.TeacherEmail = (string)jsonLecture.teacher_email;
+                    lecture.TeacherFirstName = (string)jsonLecture.teacher_first_name;
+                    lecture.TeacherLastName = (string)jsonLecture.teacher_last_name;
+                    lecture.Cost = Convert.ToInt32((string)jsonLecture.cost);
+                    lecture.MaxUsers = Convert.ToInt32((string)jsonLecture.max_users);
+                    lecture.Description = (string)jsonLecture.description;
+                    lecture.NumberOfParticipants = Convert.ToInt32((string)jsonLecture.n_part);
+
+                    lecture.UserCredit = Convert.ToInt32(json.credit);
+                    lecture.Applied = Convert.ToInt32(jsonLecture.me);
+                    lecture.Active = jsonLecture.active;
+                    lecture.firstNameLastName = json.first_name + " " + json.last_name;
+
+                    lectures.AddLast(lecture);
+
+                    if ((lecture.TeacherId == Convert.ToInt32(HttpContext.Current.User.Identity.Name) || lecture.Applied == 1) && closestLecture == null)
+                    {
+                        closestLecture = lecture;
+                    }
                 }
             }
         }
