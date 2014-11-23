@@ -91,7 +91,7 @@ namespace Hackathon
                 }
                 else
                 {
-                    html.Append("<div class='button'><a href='/Session.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestProblem.firstNameLastName + "'>Connect</a></div>");
+                    html.Append("<div class='button'><a href='/Session.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestLecture.firstNameLastName + "'>Connect</a></div>");
                 }
 
                 LiteralControl literalControl = new LiteralControl();
@@ -215,7 +215,8 @@ namespace Hackathon
             string result = webclient.DownloadString(Home.ServerHttpGetRequestFutureLectures.ToString() + "?id=" + HttpContext.Current.User.Identity.Name);
             dynamic json = Functions.getJson(result);
 
-            foreach (dynamic jsonLecture in json.lectures) {
+            foreach (dynamic jsonLecture in json.lectures)
+            {
                 Lecture lecture = new Lecture();
                 lecture.Id = Convert.ToInt32((string)jsonLecture.lecture_id);
                 lecture.BeginTime = Functions.calculateReverseTime(Convert.ToInt64((string)jsonLecture.begin_time));
@@ -298,6 +299,6 @@ namespace Hackathon
             Response.Redirect("/Profile.aspx");
         }
 
-        
+
     }
 }
