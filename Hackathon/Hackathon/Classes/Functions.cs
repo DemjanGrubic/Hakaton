@@ -19,12 +19,12 @@ namespace Hackathon.Classes
             int second = 0;
 
             DateTime dateTime = new DateTime(year, month, day, hour, minute, second);
-            return (Convert.ToInt32((dateTime - new DateTime(1969, 12, 31, 19, 0, 0).ToLocalTime()).TotalSeconds)).ToString();
+            return (Convert.ToInt32((dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime()).TotalSeconds)).ToString();
         }
 
         public static DateTime calculateReverseTime(long seconds)
         {
-            System.DateTime dtDateTime = new DateTime(1969, 12, 31, 19, 0, 0, System.DateTimeKind.Utc);
+            System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
             dtDateTime = dtDateTime.AddSeconds(seconds).ToLocalTime();
             return dtDateTime;
         }

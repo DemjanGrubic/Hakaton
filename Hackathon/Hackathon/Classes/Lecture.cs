@@ -40,7 +40,7 @@ namespace Hackathon.Classes
             html.Append("<div class='rightDiv'>");
             html.Append("<div class='teacher'>Teacher: " + TeacherFirstName + " " + TeacherLastName + "</div>");
             html.Append("<div class='date'>Date: " + BeginTime.ToString("dd. MMM yyyy.") + "</div>");
-            html.Append("<div class='time'>Time: " + BeginTime.ToString("hh:mm") + "</div>");
+            html.Append("<div class='time'>Time: " + BeginTime.ToString("HH:mm") + "</div>");
             html.Append("<div class='duration'>Duration: " + Duration + " min</div>");
             html.Append("<div class='users'>Number of users: " + NumberOfParticipants + "/" + MaxUsers + "</div>");
 

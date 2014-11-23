@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="Session.css" />
     <title>test</title>
     <script type="text/javascript">
         var ws;
@@ -42,6 +43,7 @@
         function createSpan(text) {
             var span = document.createElement('span');
             span.innerHTML = text + '<br />';
+            conversation.scrollTop = conversation.scrollHeight - conversation.clientHeight;
             return span;
         }
 
@@ -50,13 +52,13 @@
             // wireEvents();
             $('send').addEventListener('click', function () {
                 var message = $('message');
-                ws.send("0" + $('phantomKey').value + "\n" + $('phantomName').value + ": " + message.value);
+                ws.send("0" + $('phantomKey').value + " " + $('phantomName').value + ": " + message.value);
                 message.value = '';
             });
 
-            $('close').addEventListener('click', function () {
-                ws.close();
-            });
+            //$('close').addEventListener('click', function () {
+            //    ws.close();
+            //});
 
             var conversation = $('conversation');
             var message = $('message');
@@ -98,6 +100,12 @@
                 var str = e.data.toString();
                 switch (str.substr(0, 1)) {
                     case "0":
+                        var i = 0;
+                        while (str[i] != ' ') {
+                            i++;
+                        }
+                        conversation.appendChild(createSpan(str.substr(i + 1, str.length - (i + 1))));
+                        break;
                     case "3":
                         conversation.appendChild(createSpan(str.substr(1, str.length - 1)));
                         break;
@@ -158,9 +166,8 @@
             //        x = "white";
             //        break;
             //}
-            console.log($('phantomKey').value + " " + $('phantomTeacherKey').value);
-            if ($('phantomKey').value == $('phantomTeacherKey').value)
-            {
+            //console.log($('phantomKey').value + " " + $('phantomTeacherKey').value);
+            if ($('phantomKey').value == $('phantomTeacherKey').value) {
                 x = obj.id;
                 if (x == "white") y = 14;
                 else y = 2;
@@ -171,6 +178,11 @@
         var xxx = 3.4;
 
         function draw(color) {
+            if (prevX == 0 && prevY == 0)
+            {
+                prevX = currX;
+                prevY = currY;
+            }
             ctx.beginPath();
             ctx.moveTo(prevX / xxx, prevY / xxx);
             ctx.lineTo(currX / xxx, currY / xxx);
@@ -206,10 +218,10 @@
                 flag = true;
                 dot_flag = true;
                 if (dot_flag) {
-                    ctx.beginPath();
+                    //ctx.beginPath();
                     ctx.fillStyle = color;
-                    ctx.fillRect(currX, currY, 2, 2);
-                    ctx.closePath();
+                    //ctx.fillRect(currX/xxx, currY/xxx, 2, 2);
+                    //ctx.closePath();
                     dot_flag = false;
                 }
             }
@@ -239,10 +251,10 @@
                 flag = true;
                 dot_flag = true;
                 if (dot_flag) {
-                    ctx.beginPath();
+                    //ctx.beginPath();
                     ctx.fillStyle = color;
-                    ctx.fillRect(currX, currY, 2, 2);
-                    ctx.closePath();
+                    //ctx.fillRect(currX/xxx, currY/xxx, 2, 2);
+                    //ctx.closePath();
                     dot_flag = false;
                 }
             }
@@ -263,7 +275,7 @@
 
         function sendMsg() {
             var message = $('message');
-            ws.send("0" + $('phantomKey').value + "\n" + $('phantomName').value + ": " + message.value);
+            ws.send("0" + $('phantomKey').value + " " + $('phantomName').value + ": " + message.value);
             message.value = '';
         }
 
@@ -286,26 +298,60 @@
                 <td>
                     <canvas id="can" style="border-style: solid; border-color: inherit; border-width: 2px; height: 500px; width: 1000px;"></canvas>
                 </td>
-                <td>
-                    <div>Color palette</div>
-                    <div style="width: 30px; height: 30px; background: green;" id="green" onclick="color(this)"></div>
-                    <div style="width: 30px; height: 30px; background: blue;" id="blue" onclick="color(this)"></div>
-                    <div style="width: 30px; height: 30px; background: red;" id="red" onclick="color(this)"></div>
-                    <div style="width: 30px; height: 30px; background: yellow;" id="yellow" onclick="color(this)"></div>
-                    <div style="width: 30px; height: 30px; background: orange;" id="orange" onclick="color(this)"></div>
-                    <div style="width: 30px; height: 30px; background: black;" id="black" onclick="color(this)"></div>
+                <td style="padding: 0px 70px 300px 70px;">
+                    <table cellspacing="10">
+                        <tr>
+                            <div id="palete">Color Palette</div>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: green;" id="green" onclick="color(this)"></div>
+                            </td>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: blue;" id="blue" onclick="color(this)"></div>
+                            </td>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: red;" id="red" onclick="color(this)"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: yellow;" id="yellow" onclick="color(this)"></div>
+                            </td>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: orange;" id="orange" onclick="color(this)"></div>
+                            </td>
+                            <td>
+                                <div style="width: 50px; height: 50px; background: black;" id="black" onclick="color(this)"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <table cellspacing="5">
+                                <tr>
+                                    <td>
+                                        <div id="conversation"></div>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="message" />
+                                    </td>
+                                    <td>
+                                        <input id="send" type="button" value="Send" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>
 
         <br />
-        <input id="message" />
-        <input id="send" type="button" value="Send" />
-        <input id="close" type="button" value="Close Connection" />
         <input id="phantomKey" type="hidden" value="" runat="server" />
         <input id="phantomName" type="hidden" value="" runat="server" />
         <input id="phantomTeacherKey" type="hidden" value="" runat="server" /><br />
-        <div id="conversation"></div>
     </form>
 </body>
 </html>

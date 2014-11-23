@@ -20,8 +20,8 @@ namespace Hackathon
             phantomName.Value = myNameString;
             phantomTeacherKey.Value = teacherId;
 
-            if (teacherId == null) teacherId = "100";
-            if (myId == null) myId = "5";
+            //if (teacherId == null) teacherId = "100";
+            //if (myId == null) myId = "5";
 
             if (myId.Equals(teacherId))
             {

@@ -74,6 +74,7 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Session.aspx" />
+    <Content Include="Session.css" />
     <Content Include="Web.config" />
     <Content Include="WebSocketsServer.ashx" />
   </ItemGroup>

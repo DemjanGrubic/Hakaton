@@ -32,7 +32,7 @@ namespace Hackathon
                     clients.Broadcast(string.Format("1findxy2({0}, \"{1}\");", message.Substring(1), color));
                     break;
                 case '0':
-                case '2':
+                case '3':
                     clients.Broadcast(string.Format("{0}", message));
                     break;
                 case '4':
