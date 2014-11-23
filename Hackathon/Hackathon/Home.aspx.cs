@@ -91,7 +91,7 @@ namespace Hackathon
                 }
                 else
                 {
-                    html.Append("<div class='button'><a href='/Connect.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "'>Connect</a></div>");
+                    html.Append("<div class='button'><a href='/Session.aspx?teacherId=" + closestLecture.TeacherId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestProblem.firstNameLastName + "'>Connect</a></div>");
                 }
 
                 LiteralControl literalControl = new LiteralControl();
@@ -121,7 +121,7 @@ namespace Hackathon
                 }
                 else
                 {
-                    html.Append("<a href='/Connect.aspx?teacherId=" + closestProblem.SolveId + "&myId=" + HttpContext.Current.User.Identity.Name + "'><div class='button'>Connect</div></a>");
+                    html.Append("<a href='/Session.aspx?teacherId=" + closestProblem.SolveId + "&myId=" + HttpContext.Current.User.Identity.Name + "&myNameString=" + closestProblem.firstNameLastName + "'><div class='button'>Connect</div></a>");
                 }
 
                 LiteralControl literalControl = new LiteralControl();
@@ -196,6 +196,7 @@ namespace Hackathon
                 problem.UserCredit = Convert.ToInt32(json.credit);
                 problem.Applied = Convert.ToInt32(jsonProblem.me);
                 problem.Active = jsonProblem.active;
+                problem.firstNameLastName = json.first_name + " " + json.last_name;
 
                 problems.AddLast(problem);
 
@@ -231,6 +232,7 @@ namespace Hackathon
                 lecture.UserCredit = Convert.ToInt32(json.credit);
                 lecture.Applied = Convert.ToInt32(jsonLecture.me);
                 lecture.Active = jsonLecture.active;
+                lecture.firstNameLastName = json.first_name + " " + json.last_name;
 
                 lectures.AddLast(lecture);
 

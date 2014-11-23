@@ -4,44 +4,58 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Login</title>
+    <link href="design.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="Form1" runat="server">
     <div>
-        <table>
-            <tr>
-                <th colspan="3">
-                    Login
-                </th>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><asp:TextBox ID="email" runat="server" /></td>
-                <td>
-                    <asp:RequiredFieldValidator ErrorMessage="Required" Display="Dynamic" ForeColor="Red"
-                    ControlToValidate="email" runat="server" />
-                    <asp:RegularExpressionValidator runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-                    ControlToValidate="email" ForeColor="Red" ErrorMessage="Invalid email address." />
-                </td>
-            </tr>
+        <div id="header">
+            <div id="headerButtons">
+            </div>
+        </div>
 
-            <tr>
-                <td>Password</td>
-                <td><asp:TextBox TextMode="Password" ID="password" runat="server" /></td>
-                <td><asp:RequiredFieldValidator ErrorMessage="Required" ForeColor="Red" ControlToValidate="password" runat="server" /></td>
-            </tr>
+        <div id="mainDiv">
+            <div class="loginContainer">
 
-            <tr>
-                <td colspan="3"><asp:Label ForeColor="Red" ID="failureMessage" runat="server"/></td>
-            </tr>
+                <div class="lecture">
+                    <div class="desciptionTitle">Login</div>
 
-            <tr>
-                <td colspan="3"><asp:Button ID="login" Text="Login" runat="server" OnClick="ValidateUser" /></td>
-            </tr>
-        </table>
+                    <div class="description">
+                        <table class="inputTable">
+                            <tr>
+                                <td>Email</td>
+                                <td>
+                                    <asp:TextBox ID="email" runat="server" /></td>
+                                <td>
+                                    <asp:RequiredFieldValidator ErrorMessage="Required" Display="Dynamic" ForeColor="Red"
+                                        ControlToValidate="email" runat="server" />
+                                    <asp:RegularExpressionValidator runat="server" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                        ControlToValidate="email" ForeColor="Red" ErrorMessage="Invalid email address." />
+                                </td>
+                            </tr>
 
-        <asp:Button CausesValidation="false" ID="Register1" Text="Register" OnClick="RegisterPage" runat="server"/>
+                            <tr>
+                                <td>Password</td>
+                                <td>
+                                    <asp:TextBox TextMode="Password" ID="password" runat="server" /></td>
+                                <td>
+                                    <asp:RequiredFieldValidator ErrorMessage="Required" ForeColor="Red" ControlToValidate="password" runat="server" /></td>
+                            </tr>
+
+
+                            <tr>
+                                <td colspan="3">
+                                    <asp:Label ForeColor="Red" ID="failureMessage" runat="server" /></td>
+                            </tr>
+                        </table>
+
+                        <asp:Button ID="login" class="button" Text="Login" runat="server" OnClick="ValidateUser" />
+                        <asp:Button CausesValidation="false" class="button" ID="Register1" Text="Register" OnClick="RegisterPage" runat="server" />
+                    </div>
+                </div>
+             </div>
+        </div>
     </div>
     </form>
 </body>

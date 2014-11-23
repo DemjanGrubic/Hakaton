@@ -13,13 +13,13 @@ namespace Hackathon {
     public partial class Register {
         
         /// <summary>
-        /// Form1 control.
+        /// Form2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form2;
         
         /// <summary>
         /// email control.
@@ -76,12 +76,12 @@ namespace Hackathon {
         protected global::System.Web.UI.WebControls.Label failureMessage;
         
         /// <summary>
-        /// register control.
+        /// Register1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button register;
+        protected global::System.Web.UI.WebControls.Button Register1;
     }
 }

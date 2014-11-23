@@ -102,6 +102,11 @@ a {
     width: 900px;
 }
 
+.inputTable {
+    border-spacing: 10px;
+    border-collapse: separate;
+}
+
 .lecture, .problem {
     background-color: white;
     padding: 20px 20px;
@@ -111,7 +116,12 @@ a {
     margin: 10px;
 }
 
-#nextSessionLecture, #nextSessionProblem {
+.loginContainer {
+    width: 550px;
+    margin: auto;
+}
+
+#nextSessionLecture, #nextSessionProblem, #userData {
     background-color: white;
     padding: 20px 20px;
     width: 220px;
@@ -119,6 +129,12 @@ a {
     margin-right: 50px;
     border-bottom: 3px solid #C1C1C1;
     border-right: 3px solid #F2F2F2;
+}
+
+#userData {
+    text-align: left;
+    width: 500px;
+    padding: 100px;
 }
 
 .leftDiv {
@@ -178,4 +194,8 @@ a {
 
 .disabledButton {
     background-color: #ff5104;
+}
+
+.linkProfile {
+    color: Blue;
 }

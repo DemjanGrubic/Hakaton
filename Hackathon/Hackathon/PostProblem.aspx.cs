@@ -40,13 +40,11 @@ namespace Hackathon
 
             if (((string)json.message).Equals(PostProblem.SuccessLoginMessage))
             {
-                sucessMessage.Text = (string)json.message;
-                failureMessage.Text = string.Empty;
+                Response.Redirect("/Home.aspx");
             }
             else
             {
                 failureMessage.Text = (string)json.message;
-                sucessMessage.Text = string.Empty;
             }
 
         }

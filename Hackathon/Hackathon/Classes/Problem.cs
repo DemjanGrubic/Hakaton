@@ -24,6 +24,7 @@ namespace Hackathon.Classes
         public int UserCredit { get; set; }
         public int Applied { get; set; }
         public int Active { get; set; }
+        public string firstNameLastName { get; set; }
 
         public override string ToString()
         {
@@ -40,7 +41,7 @@ namespace Hackathon.Classes
             html.Append("</div>");
 
             html.Append("<div class='rightDiv'>");
-            html.Append("<div class='teacher'>Teacher: " + PosterFirstName + " " + PosterLastName + "</div>");
+            html.Append("<div class='teacher'>Poster: <a class='linkProfile' href='/Profile.aspx?id=" + PosterId + "'>" + PosterFirstName + " " + PosterLastName + "</a></div>");
             html.Append("<div class='date'>Date: " + BeginTime.ToString("dd. MMM yyyy.") + "</div>");
             html.Append("<div class='time'>Time: " + BeginTime.ToString("HH:mm") + "</div>");
             html.Append("<div class='duration'>Duration: " + Duration + " min</div>");
