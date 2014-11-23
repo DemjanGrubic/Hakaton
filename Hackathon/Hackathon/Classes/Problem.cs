@@ -41,9 +41,9 @@ namespace Hackathon.Classes
             html.Append("</div>");
 
             html.Append("<div class='rightDiv'>");
-            html.Append("<div class='teacher'>Teacher: " + PosterFirstName + " " + PosterLastName + "</div>");
+            html.Append("<div class='teacher'>Poster: <a class='linkProfile' href='/Profile.aspx?id=" + PosterId + "'>" + PosterFirstName + " " + PosterLastName + "</a></div>");
             html.Append("<div class='date'>Date: " + BeginTime.ToString("dd. MMM yyyy.") + "</div>");
-            html.Append("<div class='time'>Time: " + BeginTime.ToString("hh:mm") + "</div>");
+            html.Append("<div class='time'>Time: " + BeginTime.ToString("HH:mm") + "</div>");
             html.Append("<div class='duration'>Duration: " + Duration + " min</div>");
 
             if (SolveId == -1 && Applied == 0 && UserCredit >= Cost)

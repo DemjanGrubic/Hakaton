@@ -87,7 +87,7 @@ namespace Hackathon
 
                 if (closestLecture.Active == 0)
                 {
-                    html.Append("<div class='disabledButton'>" + closestLecture.BeginTime.ToString("hh:mm") + "&nbsp; &nbsp;" + closestLecture.BeginTime.ToString("dd. MMM yyyy.") + "</div>");
+                    html.Append("<div class='disabledButton'>" + closestLecture.BeginTime.ToString("HH:mm") + "&nbsp; &nbsp;" + closestLecture.BeginTime.ToString("dd. MMM yyyy.") + "</div>");
                 }
                 else
                 {
@@ -117,7 +117,7 @@ namespace Hackathon
 
                 if (closestProblem.Active == 0)
                 {
-                    html.Append("<div class='disabledButton'>" + closestProblem.BeginTime.ToString("hh:mm") + "&nbsp; &nbsp;" + closestProblem.BeginTime.ToString("dd. MMM yyyy.") + "</div>");
+                    html.Append("<div class='disabledButton'>" + closestProblem.BeginTime.ToString("HH:mm") + "&nbsp; &nbsp;" + closestProblem.BeginTime.ToString("dd. MMM yyyy.") + "</div>");
                 }
                 else
                 {
