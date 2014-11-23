@@ -7,10 +7,12 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-        
-    </div>
+    <form id="home" runat="server">
+        <asp:Button OnClick="Logout" runat="server" Text="Logout" />
+
+        <div>
+            <label id="username">You are logged in</label>
+        </div>
     </form>
 </body>
 </html>
