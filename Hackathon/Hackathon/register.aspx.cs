@@ -33,12 +33,7 @@ namespace Hackathon
             httpGetRequestUrl.Append("&last_name=" + lastName.Text);
 
             string result = webclient.DownloadString(httpGetRequestUrl.ToString());
-
-            int beginOfJSON = result.IndexOf('{');
-            int endOfJSON = result.IndexOf('}');
-            result = result.Substring(beginOfJSON, endOfJSON - beginOfJSON + 1);
-
-            dynamic json = Json.Decode(result);
+            dynamic json = Classes.Functions.getJson(result);
 
             if (((string)json.message).Equals(Register.SuccessRegisterMessage))
             {

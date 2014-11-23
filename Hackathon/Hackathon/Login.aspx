@@ -33,7 +33,7 @@
             </tr>
 
             <tr>
-                <td colspan="3"><asp:Label ID="failureMessage" runat="server"/></td>
+                <td colspan="3"><asp:Label ForeColor="Red" ID="failureMessage" runat="server"/></td>
             </tr>
 
             <tr>
