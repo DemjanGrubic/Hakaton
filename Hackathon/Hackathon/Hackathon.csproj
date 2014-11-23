@@ -62,8 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Connect.aspx" />
+    <Content Include="design.css" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="PostLecture.aspx" />
     <Content Include="PostProblem.aspx" />
     <Content Include="Profile.aspx" />
@@ -76,6 +78,8 @@
     <Content Include="WebSocketsServer.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Lecture.cs" />
+    <Compile Include="Classes\Problem.cs" />
     <Compile Include="Connect.aspx.cs">
       <DependentUpon>Connect.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -83,6 +87,7 @@
     <Compile Include="Connect.aspx.designer.cs">
       <DependentUpon>Connect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Functions.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,6 +101,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="MicrosoftWebSockets.cs" />
     <Compile Include="PostLecture.aspx.cs">

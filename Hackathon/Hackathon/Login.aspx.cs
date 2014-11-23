@@ -20,7 +20,10 @@ namespace Hackathon
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (this.Page.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/Home.aspx");
+            }
         }
 
         protected void ValidateUser(object sender, EventArgs e)
@@ -33,16 +36,11 @@ namespace Hackathon
             httpGetRequestUrl.Append("&password=" + password.Text);
 
             string result = webclient.DownloadString(httpGetRequestUrl.ToString());
-
-            int beginOfJSON = result.IndexOf('{');
-            int endOfJSON = result.IndexOf('}');
-            result = result.Substring(beginOfJSON, endOfJSON - beginOfJSON + 1);
-
-            dynamic json = Json.Decode(result);
+            dynamic json = Classes.Functions.getJson(result);
 
             if (((string)json.message).Equals(Login.SuccessLoginMessage))
             {
-                FormsAuthentication.RedirectFromLoginPage(email.Text, true);
+                FormsAuthentication.RedirectFromLoginPage(json.id, true);
             }
             else
             {
